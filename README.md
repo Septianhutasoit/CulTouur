@@ -41,6 +41,7 @@
 
   <p align="center">
     <img src="https://img.shields.io/badge/Status-Development-2E7D32?style=for-the-badge" />
+    <img src="https://img.shields.io/badge/GEMASTIK-2026-FF6B35?style=for-the-badge" />
     <img src="https://img.shields.io/badge/License-MIT-3C873A?style=for-the-badge" />
   </p>
 
