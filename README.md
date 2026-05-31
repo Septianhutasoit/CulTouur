@@ -26,6 +26,7 @@
 
   <p align="center">
     <img src="https://img.shields.io/badge/PyTorch-2.12+-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white" />
+    <img src="https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white" />
     <img src="https://img.shields.io/badge/Hugging_Face-2.2+-FFD21E?style=for-the-badge&logo=huggingface&logoColor=black" />
     <img src="https://img.shields.io/badge/Sentence_Transformers-5.5+-FFD700?style=for-the-badge&logo=huggingface&logoColor=black" />
     <img src="https://img.shields.io/badge/FAISS-1.14+-EA6B6B?style=for-the-badge&logo=facebook&logoColor=white" />
