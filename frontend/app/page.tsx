@@ -1,127 +1,121 @@
 "use client";
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
+
+// Tipe data untuk pesan chat
+type Message = {
+  role: 'user' | 'bot';
+  content: string;
+  results?: any[];
+};
 
 export default function Home() {
-  const [query, setQuery] = useState("");
-  const [results, setResults] = useState([]);
+  const [messages, setMessages] = useState<Message[]>([
+    { role: 'bot', content: 'Halo! Saya asisten CulTour AI. Ada yang bisa saya bantu untuk rencana perjalanan Anda di Danau Toba?' }
+  ]);
+  const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
-  const [status, setStatus] = useState<any>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
 
-  // Fungsi untuk mengambil status AI saat pertama kali dibuka
+  // Auto-scroll ke pesan terbaru
   useEffect(() => {
-    fetch('http://127.0.0.1:8000/api/v1/search/status')
-      .then(res => res.json())
-      .then(data => setStatus(data))
-      .catch(err => console.error("Gagal mengambil status:", err));
-  }, []);
+    scrollRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [messages]);
 
-  const handleSearch = async (e: React.FormEvent) => {
+  const handleSendMessage = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!query) return;
+    if (!input.trim() || loading) return;
+
+    const userQuery = input;
+    setInput("");
+    setMessages(prev => [...prev, { role: 'user', content: userQuery }]);
     setLoading(true);
+
     try {
-      const res = await fetch(`http://127.0.0.1:8000/api/v1/search?q=${encodeURIComponent(query)}&limit=6`);
+      const res = await fetch(`http://localhost:8000/api/v1/search?q=${encodeURIComponent(userQuery)}&limit=3`);
       const data = await res.json();
-      setResults(data.results || []);
+
+      setMessages(prev => [...prev, {
+        role: 'bot',
+        content: `Berdasarkan pencarian AI saya, berikut rekomendasi terbaik untuk "${userQuery}":`,
+        results: data.results
+      }]);
     } catch (error) {
-      console.error("Search error:", error);
+      setMessages(prev => [...prev, { role: 'bot', content: 'Maaf, saya sedang kesulitan menghubungi server. Pastikan Backend sudah berjalan.' }]);
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 text-slate-900">
-      {/* HEADER SECTION */}
-      <header className="bg-green-800 text-white py-16 px-4 shadow-xl">
-        <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-5xl font-black mb-2 tracking-tight">CulTour AI</h1>
-          <p className="text-lg text-green-100 mb-8 font-medium">Asisten Cerdas Wisata Budaya Danau Toba</p>
-
-          <form onSubmit={handleSearch} className="relative max-w-2xl mx-auto group">
-            <input
-              type="text"
-              className="w-full p-5 pl-7 rounded-2xl text-slate-900 shadow-2xl outline-none focus:ring-4 focus:ring-green-400 transition-all pr-32 text-lg"
-              placeholder="Coba: 'rekomendasi kuliner pedas' atau 'sejarah batak'..."
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-            />
-            <button
-              type="submit"
-              disabled={loading}
-              className="absolute right-2 top-2 bottom-2 bg-green-600 hover:bg-green-700 text-white px-8 rounded-xl font-bold transition-all disabled:bg-slate-400 active:scale-95"
-            >
-              {loading ? "..." : "Cari AI"}
-            </button>
-          </form>
-
-          {status && (
-            <div className="mt-6 flex justify-center gap-4 text-xs">
-              <span className="bg-green-900/50 px-3 py-1 rounded-full border border-green-700/50">
-                🟢 AI Ready: {status.index_size} Data Terindeks
-              </span>
-              <span className="bg-green-900/50 px-3 py-1 rounded-full border border-green-700/50 uppercase">
-                Model: {status.model_name.split('/').pop()}
-              </span>
-            </div>
-          )}
+    <div className="flex flex-col h-screen bg-gray-50 text-slate-800">
+      {/* HEADER */}
+      <header className="bg-green-800 text-white p-4 shadow-md flex justify-between items-center">
+        <h1 className="text-xl font-bold tracking-tight">CulTour <span className="font-light text-green-200">AI</span></h1>
+        <div className="text-xs bg-green-700 px-3 py-1 rounded-full border border-green-600">
+          ● AI Backend Online
         </div>
       </header>
 
-      {/* RESULTS SECTION */}
-      <main className="max-w-6xl mx-auto py-12 px-6">
-        {results.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {results.map((item: any, idx: number) => (
-              <div key={idx} className="bg-white rounded-3xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 group">
-                <div className="p-7">
-                  <div className="flex justify-between items-center mb-4">
-                    <span className={`text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest ${item.destination.category === 'Wisata' ? 'bg-blue-100 text-blue-700' :
-                        item.destination.category === 'Kuliner' ? 'bg-orange-100 text-orange-700' :
-                          item.destination.category === 'Budaya' ? 'bg-purple-100 text-purple-700' :
-                            'bg-red-100 text-red-700'
-                      }`}>
-                      {item.destination.category}
-                    </span>
-                    <div className="flex flex-col items-end">
-                      <span className="text-xs font-black text-green-600">
-                        {(item.similarity_score * 100).toFixed(1)}% Match
-                      </span>
-                    </div>
-                  </div>
+      {/* CHAT AREA */}
+      <div className="flex-1 overflow-y-auto p-4 space-y-6 max-w-4xl w-full mx-auto">
+        {messages.map((msg, idx) => (
+          <div key={idx} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
+            <div className={`max-w-[85%] rounded-2xl p-4 shadow-sm ${msg.role === 'user' ? 'bg-green-600 text-white' : 'bg-white border border-gray-200'
+              }`}>
+              <p className="text-sm leading-relaxed">{msg.content}</p>
 
-                  <h3 className="text-xl font-bold text-gray-800 mb-3 group-hover:text-green-700 transition-colors">
-                    {item.destination.name}
-                  </h3>
-                  <p className="text-gray-600 text-sm leading-relaxed mb-6 line-clamp-4">
-                    {item.destination.description}
-                  </p>
-
-                  <div className="flex items-center justify-between pt-5 border-t border-gray-50 text-sm font-medium">
-                    <div className="flex items-center text-gray-500">
-                      <span className="mr-1">📍</span> {item.destination.location}
+              {/* HASIL REKOMENDASI (CARDS) */}
+              {msg.results && msg.results.length > 0 && (
+                <div className="mt-4 grid grid-cols-1 gap-3">
+                  {msg.results.map((item, i) => (
+                    <div key={i} className="bg-gray-50 rounded-xl p-3 border border-gray-100 flex flex-col hover:border-green-300 transition-colors">
+                      <div className="flex justify-between items-start mb-1">
+                        <span className="text-[10px] font-bold uppercase tracking-tighter text-green-700">{item.destination.category}</span>
+                        <span className="text-[10px] font-mono text-gray-400">{(item.similarity_score * 100).toFixed(0)}% Match</span>
+                      </div>
+                      <h4 className="font-bold text-sm text-gray-900">{item.destination.name}</h4>
+                      <p className="text-xs text-gray-500 line-clamp-2 my-1">{item.destination.description}</p>
+                      <div className="flex justify-between items-center mt-2 text-[10px] text-gray-400 font-medium">
+                        <span>📍 {item.destination.location}</span>
+                        <span className="text-amber-500">⭐ {item.destination.rating}</span>
+                      </div>
                     </div>
-                    <div className="flex items-center text-amber-500">
-                      <span className="mr-1">⭐</span> {item.destination.rating}
-                    </div>
-                  </div>
+                  ))}
                 </div>
-              </div>
-            ))}
-          </div>
-        ) : (
-          !loading && (
-            <div className="text-center py-20">
-              <div className="text-6xl mb-4">🌲</div>
-              <h2 className="text-2xl font-bold text-gray-400">Siap menjelajahi Danau Toba?</h2>
-              <p className="text-gray-400">Masukkan apa yang ingin Anda cari di kolom pencarian di atas.</p>
+              )}
             </div>
-          )
+          </div>
+        ))}
+        {loading && (
+          <div className="flex justify-start">
+            <div className="bg-white border p-4 rounded-2xl shadow-sm italic text-gray-400 text-xs animate-pulse">
+              AI sedang berpikir...
+            </div>
+          </div>
         )}
-      </main>
+        <div ref={scrollRef} />
+      </div>
 
-      <footer className="py-10 text-center text-gray-400 text-xs border-t border-gray-100">
-        &copy; 2026 CulTour AI - Proyek Kompetisi GEMASTIK
+      {/* INPUT AREA */}
+      <footer className="p-4 bg-white border-t">
+        <form onSubmit={handleSendMessage} className="max-w-4xl mx-auto relative">
+          <input
+            type="text"
+            className="w-full p-4 pr-16 rounded-xl border border-gray-200 focus:ring-2 focus:ring-green-500 outline-none text-sm transition-all"
+            placeholder="Tanyakan sesuatu... (Contoh: Apa makanan khas Samosir?)"
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+          />
+          <button
+            type="submit"
+            className="absolute right-2 top-2 bottom-2 bg-green-700 text-white px-4 rounded-lg font-bold text-xs hover:bg-green-800 active:scale-95 transition-all"
+          >
+            KIRIM
+          </button>
+        </form>
+        <p className="text-center text-[10px] text-gray-400 mt-2">
+          CulTour AI menggunakan Semantic Search untuk memberikan rekomendasi wisata budaya terbaik.
+        </p>
       </footer>
     </div>
   );
