@@ -1,7 +1,7 @@
 'use client';
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Sparkles, Send, RotateCcw, BookOpen, Map } from 'lucide-react';
+import { Sparkles, Send, RotateCcw, Map } from 'lucide-react';
 import { chatService } from '@/services/destination';
 import type { ChatMessage, Destination } from '@/types';
 import DestinationCard from '@/components/DestinationCard';
@@ -17,7 +17,10 @@ const QUICK_PROMPTS = [
 
 export default function AIGuidePage() {
     const [messages, setMessages] = useState<ChatMessage[]>([
-        { role: 'bot', text: 'Horas! 👋 Saya CulTour AI — asisten wisata budaya Danau Toba.\n\nCeritakan preferensimu dan saya akan rekomendasikan destinasi, itinerary, atau info budaya yang paling cocok untukmu!' },
+        {
+            role: 'bot',
+            text: 'Horas! Saya CulTour AI - asisten wisata budaya Danau Toba.\n\nCeritakan preferensimu dan saya akan rekomendasikan destinasi, itinerary, atau info budaya yang paling cocok untukmu!',
+        },
     ]);
     const [input, setInput] = useState('');
     const [loading, setLoading] = useState(false);
@@ -31,14 +34,13 @@ export default function AIGuidePage() {
 
     const send = async (text: string) => {
         if (!text.trim() || loading) return;
-        const userMsg: ChatMessage = { role: 'user', text };
-        setMessages(prev => [...prev, userMsg]);
+        setMessages(prev => [...prev, { role: 'user', text }]);
         setInput('');
         setLoading(true);
         setRecs([]);
 
         try {
-            const history = messages.slice(-6); // kirim 6 pesan terakhir sebagai konteks
+            const history = messages.slice(-6);
             const res = await chatService.send({ message: text, history });
             setMessages(prev => [...prev, { role: 'bot', text: res.reply }]);
             if (res.recommendations?.length) setRecs(res.recommendations);
@@ -54,7 +56,7 @@ export default function AIGuidePage() {
     };
 
     const reset = () => {
-        setMessages([{ role: 'bot', text: 'Horas! 👋 Sesi baru dimulai. Ceritakan preferensimu!' }]);
+        setMessages([{ role: 'bot', text: 'Horas! Sesi baru dimulai. Ceritakan preferensimu!' }]);
         setRecs([]);
         setInput('');
     };
@@ -63,7 +65,7 @@ export default function AIGuidePage() {
         <div className="min-h-screen bg-[#0a0a0a] pt-20 pb-8">
             <div className="max-w-4xl mx-auto px-4 flex flex-col" style={{ height: 'calc(100vh - 80px)' }}>
 
-                {/* ── Header ──────────────────────────────────────────────────── */}
+                {/* Header */}
                 <div className="flex items-center justify-between mb-4 flex-shrink-0">
                     <div className="flex items-center gap-3">
                         <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#1D9E75] to-[#085041] flex items-center justify-center">
@@ -82,7 +84,7 @@ export default function AIGuidePage() {
                     </button>
                 </div>
 
-                {/* ── Quick prompts ────────────────────────────────────────────── */}
+                {/* Quick prompts */}
                 {messages.length <= 1 && (
                     <div className="flex flex-wrap gap-2 mb-4 flex-shrink-0">
                         {QUICK_PROMPTS.map(q => (
@@ -97,7 +99,7 @@ export default function AIGuidePage() {
                     </div>
                 )}
 
-                {/* ── Chat area ────────────────────────────────────────────────── */}
+                {/* Chat area */}
                 <div className="flex-1 overflow-y-auto space-y-4 pr-1 min-h-0 pb-4">
                     {messages.map((m, i) => (
                         <motion.div
@@ -123,7 +125,7 @@ export default function AIGuidePage() {
                         </motion.div>
                     ))}
 
-                    {/* Loading indicator */}
+                    {/* Loading */}
                     {loading && (
                         <div className="flex justify-start">
                             <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-[#1D9E75] to-[#085041] flex items-center justify-center flex-shrink-0 mr-2">
@@ -142,7 +144,7 @@ export default function AIGuidePage() {
                         </div>
                     )}
 
-                    {/* Rekomendasi destinasi dari AI */}
+                    {/* Rekomendasi destinasi */}
                     <AnimatePresence>
                         {recs.length > 0 && (
                             <motion.div
@@ -166,7 +168,7 @@ export default function AIGuidePage() {
                     <div ref={bottomRef} />
                 </div>
 
-                {/* ── Input area ───────────────────────────────────────────────── */}
+                {/* Input */}
                 <div className="flex-shrink-0 pt-3 border-t border-white/8">
                     <div className="flex gap-3">
                         <input

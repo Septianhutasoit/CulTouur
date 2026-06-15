@@ -1,5 +1,5 @@
-// ── Destinasi ─────────────────────────────────────────────────────────────
-export interface Destination {
+// Destination
+export  interface Destination {
     id?: number;
     name: string;
     category: string;
@@ -13,30 +13,29 @@ export interface Destination {
     duration_hours?: number;
 }
 
-// ── Search — sesuai return FastAPI GET /search ────────────────────────────
-// Backend mengembalikan array langsung, bukan {results: [...]}
+// Search - sesuai GET
 export interface SearchResult {
-    destination: Destination;
-    score: number;           // cosine similarity 0–1
+    destinations: Destination;
+    score: number;
 }
 
-// ── Chat ──────────────────────────────────────────────────────────────────
+// Chat — pakai "text" bukan "content" agar konsisten dengan ai/page.tsx
 export interface ChatMessage {
     role: 'user' | 'bot';
-    content: string;
-    results?: SearchResult[]; // rekomendasi dari AI (opsional)
+    text: string;
+    results?: SearchResult[];
 }
-
 export interface ChatRequest {
     message: string;
+    history?: ChatMessage[];
 }
-
 export interface ChatResponse {
     reply: string;
+    recommendations?: Destination[];
     results?: SearchResult[];
 }
 
-// ── Trip Planner ──────────────────────────────────────────────────────────
+// Trip Planner
 export interface PlannerPreference {
     start_location: string;
     duration_days: number;
@@ -67,7 +66,7 @@ export interface TripPlan {
     summary: string;
 }
 
-// ── Culturepedia ──────────────────────────────────────────────────────────
+// Culturepedia
 export interface CultureEntry {
     id: number;
     title: string;
