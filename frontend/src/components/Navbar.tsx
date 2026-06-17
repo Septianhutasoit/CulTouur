@@ -58,7 +58,7 @@ export default function Navbar() {
                     opacity: 1,
                     paddingLeft: isScrolled ? '2rem' : '0px',
                     paddingRight: isScrolled ? '2rem' : '0px',
-                    paddingTop: isScrolled ? '12px' : '0px',
+                    paddingTop: isScrolled ? '24px' : '0px',
                 }}
                 transition={{ duration: 0.5, ease: 'easeInOut' }}
                 className="fixed top-0 left-0 right-0 z-[100]"
@@ -79,8 +79,8 @@ export default function Navbar() {
                     <div className={`flex items-center justify-between gap-4
                         transition-all duration-500 ease-in-out
                         ${isScrolled
-                        ? 'bg-black/50 backdrop-blur-xl rounded-2xl shadow-2xl shadow-black/20 border border-white/10 px-5 py-2.5'
-                        : 'bg-gradient-to-b from-black/30 to-transparent px-6 sm:px-10 py-4'
+                        ? 'bg-black/50 backdrop-blur-xl rounded-2xl shadow-2xl shadow-black/20 border border-white/10 px-5 py-4'
+                        : 'bg-gradient-to-b from-black/30 to-transparent px-6 sm:px-10 py-12'
                         }`}
                     >
 
@@ -89,13 +89,13 @@ export default function Navbar() {
                             <motion.div
                                 whileHover={{ scale: 1.07, rotate: 5 }}
                                 transition={{ type: 'spring', stiffness: 400, damping: 15 }}
-                                className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#1D9E75] to-[#0F6E56]
+                                className="w-14 h-14 rounded-xl bg-gradient-to-br from-[#1D9E75] to-[#0F6E56]
                                     flex items-center justify-center shadow-lg shadow-[#1D9E75]/20 shrink-0"
                             >
                                 <Map size={20} className="text-white" />
                             </motion.div>
                             <div className="flex flex-col leading-tight">
-                                <span className="text-[17px] font-black tracking-tight text-white">
+                                <span className="text-[22px] font-black tracking-tight text-white">
                                     Cul
                                     <span className={`transition-colors duration-500
                                         ${isScrolled ? 'text-[#5DCAA5]' : 'text-[#9FE1CB]'}`}>
@@ -112,7 +112,7 @@ export default function Navbar() {
 
                         {/* ── DESKTOP NAV ───────────────────────────────────── */}
                         <div className="hidden lg:flex items-center justify-center flex-1">
-                            <div className="flex items-center gap-7">
+                            <div className="flex items-center gap-12">
                                 {NAV_ITEMS.map(item => {
                                     const active = isActive(item.href);
                                     return (
@@ -135,8 +135,8 @@ export default function Navbar() {
                                                 {active && (
                                                     <motion.div
                                                         layoutId="cultour-active-nav"
-                                                        className={`absolute bottom-0.5 left-2 right-2 h-[2px] rounded-full
-                                                            ${isScrolled ? 'bg-[#5DCAA5]' : 'bg-white'}`}
+                                                        className={`absolute bottom-[-6px] left-2 right-2 h-[3px] rounded-full
+                                                        ${isScrolled ? 'bg-[#5DCAA5]' : 'bg-white'}`}
                                                         transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                                                     />
                                                 )}
