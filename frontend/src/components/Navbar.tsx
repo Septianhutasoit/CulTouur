@@ -58,7 +58,7 @@ export default function Navbar() {
                     opacity: 1,
                     paddingLeft: isScrolled ? '2rem' : '0px',
                     paddingRight: isScrolled ? '2rem' : '0px',
-                    paddingTop: isScrolled ? '24px' : '0px',
+                    paddingTop: isScrolled ? '12px' : '0px',
                 }}
                 transition={{ duration: 0.5, ease: 'easeInOut' }}
                 className="fixed top-0 left-0 right-0 z-[100]"
@@ -89,7 +89,7 @@ export default function Navbar() {
                             <motion.div
                                 whileHover={{ scale: 1.07, rotate: 5 }}
                                 transition={{ type: 'spring', stiffness: 400, damping: 15 }}
-                                className="w-14 h-14 rounded-xl bg-gradient-to-br from-[#1D9E75] to-[#0F6E56]
+                                className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#1D9E75] to-[#0F6E56]
                                     flex items-center justify-center shadow-lg shadow-[#1D9E75]/20 shrink-0"
                             >
                                 <Map size={20} className="text-white" />
