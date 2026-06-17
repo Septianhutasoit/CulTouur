@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
-    Home, Compass, CalendarDays, Sparkles, BookOpen,
+    Home, Compass, CalendarDays, BookOpen,
     Bell, ChevronDown, LogOut, User, Settings,
     MessageCircle, Menu, X, Map,
 } from 'lucide-react';
@@ -13,7 +13,6 @@ const NAV_ITEMS = [
     { name: 'Beranda', href: '/', icon: Home },
     { name: 'Jelajahi', href: '/explore', icon: Compass },
     { name: 'Trip Planner', href: '/planner', icon: CalendarDays },
-    { name: 'AI Guide', href: '/ai', icon: Sparkles },
     { name: 'Culturepedia', href: '/culturepedia', icon: BookOpen },
 ];
 
