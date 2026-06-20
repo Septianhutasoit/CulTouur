@@ -48,9 +48,11 @@ export default function ExplorePage() {
         const timer = setTimeout(async () => {
             setSearching(true);
             try {
-                // Asumsi destinationService punya method search() — tambahkan jika belum ada
+                // Backend /search mengembalikan array of { destination, score } — unwrap ke Destination[]
                 const res = await destinationService.search(query);
-                setSearchResults(res?.destinations ?? res ?? []);
+                const raw = res?.destinations ?? res ?? [];
+                const unwrapped = raw.map((r: any) => r?.destination ?? r);
+                setSearchResults(unwrapped);
             } catch (err) {
                 console.error('Semantic search gagal, fallback ke filter teks lokal', err);
                 setSearchResults(
