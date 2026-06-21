@@ -1,9 +1,9 @@
 <div align="center">
   
-  <img src="https://readme-typing-svg.demolab.com?font=Plus+Jakarta+Sans&weight=700&size=40&duration=3000&pause=500&color=2D6A4F&center=true&vCenter=true&random=false&width=500&height=70&lines=CulTour;AI+Cultural+Tourism+Assistant" alt="CulTour Title" />
+  <img src="https://readme-typing-svg.demolab.com?font=Plus+Jakarta+Sans&weight=700&size=40&duration=3000&pause=500&color=0F4C81&center=true&vCenter=true&random=false&width=500&height=70&lines=VISTARA;Smart+Tourism+Intelligence+Platform" alt="VISTARA Title" />
   
   <p align="center">
-    <strong>🤖 Chatbot Cerdas Berbasis NLP untuk Rekomendasi Personal Wisata Budaya Danau Toba</strong>
+    <strong>🤖 AI-Powered Tourism Intelligence for Danau Toba</strong>
   </p>
 
   <p align="center">
@@ -26,10 +26,9 @@
 
   <p align="center">
     <img src="https://img.shields.io/badge/PyTorch-2.12+-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white" />
-    <img src="https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white" />
-    <img src="https://img.shields.io/badge/Hugging_Face-2.2+-FFD21E?style=for-the-badge&logo=huggingface&logoColor=black" />
     <img src="https://img.shields.io/badge/Sentence_Transformers-5.5+-FFD700?style=for-the-badge&logo=huggingface&logoColor=black" />
     <img src="https://img.shields.io/badge/FAISS-1.14+-EA6B6B?style=for-the-badge&logo=facebook&logoColor=white" />
+    <img src="https://img.shields.io/badge/Hugging_Face-2.2+-FFD21E?style=for-the-badge&logo=huggingface&logoColor=black" />
     <img src="https://img.shields.io/badge/Transformers-5.9+-FFD21E?style=for-the-badge&logo=huggingface&logoColor=black" />
   </p>
 
@@ -42,7 +41,8 @@
 
   <p align="center">
     <img src="https://img.shields.io/badge/Status-Development-2E7D32?style=for-the-badge" />
-    <img src="https://img.shields.io/badge/GEMASTIK-2026-FF6B35?style=for-the-badge" />
+    <img src="https://img.shields.io/badge/AI_Hackathon_ITDel-2026-FF6B35?style=for-the-badge" />
+    <img src="https://img.shields.io/badge/Preliminary_Round-Q2_2026-FF6B35?style=for-the-badge" />
     <img src="https://img.shields.io/badge/License-MIT-3C873A?style=for-the-badge" />
   </p>
 
@@ -52,46 +52,52 @@
 
 ## 📖 Overview
 
-**CulTour** adalah sistem rekomendasi wisata cerdas berbasis **Natural Language Processing (NLP)** yang dirancang khusus untuk membantu wisatawan menjelajahi kekayaan **Budaya Danau Toba**. Dengan memanfaatkan teknologi **Semantic Search** dan **Retrieval-Augmented Generation (RAG)** , CulTour dapat memahami pertanyaan natural user dan memberikan rekomendasi personal yang relevan.
+**VISTARA** — *Vista (pemandangan) + Tara (bintang/melampaui)* adalah **Smart Tourism Intelligence Platform** berbasis AI yang dirancang untuk mengubah cara wisatawan menjelajahi destinasi wisata. Terinspirasi dari keindahan Danau Toba, VISTARA hadir sebagai solusi rekomendasi wisata cerdas dengan pendekatan **AI-First** yang scalable dan siap bersaing di tingkat nasional.
 
 ### 🎯 Problem Statement
-Wisatawan sering kesulitan menemukan informasi wisata budaya yang relevan karena:
-- ❌ Pencarian tradisional hanya berbasis keyword matching
-- ❌ Informasi tersebar di berbagai platform
-- ❌ Kurangnya rekomendasi yang dipersonalisasi
-- ❌ Bahasa deskripsi yang tidak konsisten
+
+Wisatawan menghadapi tantangan dalam menemukan pengalaman wisata yang personal dan bermakna:
+
+| Masalah | Dampak |
+|---------|--------|
+| ❌ Pencarian berbasis keyword | Hasil tidak relevan dengan konteks |
+| ❌ Informasi tersebar | Sulit mendapatkan rekomendasi holistik |
+| ❌ Kurang personalisasi | Pengalaman wisata terasa generik |
+| ❌ Bahasa deskripsi tidak konsisten | Kesulitan membandingkan destinasi |
 
 ### 💡 Our Solution
-CulTour hadir dengan pendekatan **AI-First** yang mengubah cara wisatawan menemukan destinasi budaya melalui:
+
+VISTARA menggunakan pendekatan **Multi-AI Stack** yang menggabungkan berbagai teknik kecerdasan buatan:
 
 <div align="center">
   
-| Feature | Technology | Benefit |
-|---------|------------|---------|
-| 🔍 **Semantic Search** | Sentence Transformers | Memahami konteks & makna |
-| 🧠 **Vector Embeddings** | FAISS + PyTorch | Representasi cerdas destinasi |
-| 🎯 **RAG Pipeline** | Hugging Face + Transformers | Generasi rekomendasi akurat |
-| ⚡ **Real-time** | FastAPI + Uvicorn | Respons cepat & interaktif |
+| AI Capability | Technology | Business Value |
+|---------------|------------|----------------|
+| 🔍 **Semantic Search** | Sentence Transformers + FAISS | Memahami makna, bukan keyword |
+| 🎯 **RAG Pipeline** | Hugging Face + LLM | Rekomendasi akurat & kontekstual |
+| 🧠 **Vector Embeddings** | multilingual-e5-small | Representasi cerdas 384 dimensi |
+| 📊 **Sentiment Analysis** | Transformers + PyTorch | Insight kepuasan wisatawan |
+| 👁️ **Computer Vision** | Vision Transformer (Final) | Identifikasi destinasi dari foto |
+| ⚡ **Real-time** | FastAPI + Redis | Respons < 100ms |
+
 </div>
 
 ---
 
 ## ✨ Features
 
-| Feature | Description | Status | Tech |
-|---------|-------------|--------|------|
-| 🤖 **AI-Powered Chatbot** | Natural language understanding untuk query wisata | 🚧 In Progress | LLM + RAG |
-| 🔍 **Semantic Search** | Pencarian berbasis makna, bukan keyword | ✅ Completed | Sentence Transformers |
-| 📍 **Destination Database** | 100+ destinasi Danau Toba | ✅ Completed | PostgreSQL |
-| 🎭 **Cultural Events** | Informasi event budaya terkini | ✅ Completed | PostgreSQL |
-| 🍜 **Culinary Guide** | Rekomendasi kuliner khas Batak | ✅ Completed | PostgreSQL |
-| 📸 **Photo Recognition** | Identifikasi destinasi dari gambar | 🚧 Planned | Vision Transformer |
-| 📱 **Mobile Responsive** | Akses dari berbagai device | 🚧 In Progress | Tailwind CSS |
-| 🌐 **Multi-language** | Support Bahasa Indonesia & English | 🚧 Planned | Multilingual Model |
-| 📊 **Admin Dashboard** | Manajemen konten destinasi | 🚧 Planned | Next.js + Chart.js |
-| 💾 **Trip Planner** | Rencana perjalanan personal | 🚧 Planned | RAG + Contextual AI |
-| 🔄 **Real-time Updates** | Informasi destinasi terkini | 🚧 Planned | WebSocket + Redis |
-| 📈 **Analytics** | Insight perilaku wisatawan | 🚧 Planned | Pandas + Plotly |
+> 🏆 **Target Hackathon:** Preliminary Round minimal 3 AI features, Final Round all 5 features
+
+| Feature | Description | AI Tech | Status | Round |
+|---------|-------------|---------|--------|-------|
+| 🤖 **AI Chatbot** | Natural language understanding + RAG | LLM + FAISS | 🚧 In Progress | Prelim |
+| 🔍 **Semantic Search** | Makna-based search, not keyword | Sentence Transformers | ✅ Completed | Prelim |
+| 📊 **Sentiment Analysis** | Analisis review & kepuasan wisatawan | Transformers | 🚧 In Progress | Prelim |
+| 👁️ **Visual Recognition** | Identifikasi destinasi dari foto | Vision Transformer | 📅 Planned | Final |
+| 🎯 **Personalized Rec** | Rekomendasi berbasis preferensi | RAG + Contextual | 📅 Planned | Final |
+| 📍 **Destination DB** | 100+ destinasi Danau Toba | PostgreSQL | ✅ Completed | Prelim |
+| 📱 **Mobile Responsive** | Akses dari berbagai device | Tailwind CSS | 🚧 In Progress | Prelim |
+| 📈 **Analytics Dashboard** | Insight perilaku wisatawan | Pandas + Plotly | 📅 Planned | Final |
 
 ---
 
@@ -99,46 +105,59 @@ CulTour hadir dengan pendekatan **AI-First** yang mengubah cara wisatawan menemu
 
 | Category | Technology | Version | Purpose |
 |----------|------------|---------|---------|
-| **Framework** | PyTorch | 2.12.0 | Deep learning engine, tensor computation |
-| **NLP Library** | Transformers | 5.9.0 | Hugging Face model hub integration |
-| **Embeddings** | Sentence Transformers | 5.5.1 | Multilingual text embeddings |
-| **Vector Search** | FAISS | 1.14.2 | Efficient similarity search at scale |
-| **Model Hub** | Hugging Face Hub | 1.17.0 | Model repository & versioning |
-| **Tokenizers** | Tokenizers | 0.22.0 | Fast tokenization pipeline |
-| **NumPy** | NumPy | 2.4.6 | Numerical operations & array processing |
-| **SciPy** | SciPy | 1.17.1 | Scientific computing utilities |
-| **Scikit-learn** | Scikit-learn | 1.8.0 | ML utilities & preprocessing |
-| **Joblib** | Joblib | 1.5.3 | Model serialization & caching |
-| **Threadpoolctl** | Threadpoolctl | 3.6.0 | Threading optimization |
+| **Framework** | PyTorch | 2.12.0 | Deep learning engine |
+| **Embeddings** | Sentence Transformers | 5.5.1 | Multilingual E5-small (384-dim) |
+| **Vector Search** | FAISS | 1.14.2 | Similarity search at scale |
+| **NLP Library** | Transformers | 5.9.0 | Hugging Face model hub |
+| **Sentiment** | Transformers Pipeline | 5.9.0 | Zero-shot classification |
+| **Vision (Final)** | Vision Transformer | 1.17.0 | Image classification |
+| **Model Hub** | Hugging Face Hub | 1.17.0 | Model versioning |
+| **Tokenizers** | Tokenizers | 0.22.0 | Fast tokenization |
+| **NumPy** | NumPy | 2.4.6 | Numerical operations |
+| **SciPy** | SciPy | 1.17.1 | Scientific computing |
+| **Scikit-learn** | Scikit-learn | 1.8.0 | ML utilities |
+| **Joblib** | Joblib | 1.5.3 | Model serialization |
+| **Threadpoolctl** | Threadpoolctl | 3.6.0 | Thread optimization |
 | **Filelock** | Filelock | 3.29.0 | Cache management |
+
+---
 
 ### 🎯 AI Model Specifications
 
 ```yaml
+# Primary Model - Semantic Search
 Model: intfloat/multilingual-e5-small
 Architecture: Transformer (12 layers)
 Parameters: 118M
 Embedding Dimension: 384
 Context Length: 512 tokens
-Languages: 100+ (including Bahasa Indonesia)
+Languages: 100+ (Bahasa Indonesia native)
 Inference Time: ~30ms per query
 Memory Usage: ~500MB RAM
+Platform: CPU-first (runs on laptop)
 
-Features:
-- Multilingual understanding
-- Semantic similarity
-- Zero-shot classification
-- Cross-lingual transfer
-- Fine-tuning ready
+# Secondary Model - Sentiment Analysis (Preliminary)
+Model: nlptown/bert-base-multilingual-uncased-sentiment
+Architecture: BERT-base (12 layers)
+Parameters: 110M
+Labels: 5-star sentiment
+Languages: 100+ (including Indonesian)
+
+# Tertiary Model - Computer Vision (Final Round Only)
+Model: google/vit-base-patch16-224
+Architecture: Vision Transformer
+Parameters: 86M
+Input: 224x224 RGB image
+Platform: DGX B200 (Final Round)
 
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                           CULTOUR AI PIPELINE                               │
+│                         VISTARA AI PIPELINE                                │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                             │
 │  ┌─────────────┐    ┌─────────────────┐    ┌─────────────────────────────┐  │
 │  │ USER QUERY  │───▶│  PREPROCESSING  │───▶│  SENTENCE TRANSFORMER        │  │
-│  │ "pantai di  │    │ - Cleaning      │    │  multilingual-e5-small       │  │
-│  │  Danau Toba"│    │ - Tokenization  │    │  → 384-dim embedding         │  │
+│  │ "danau      │    │ - Cleaning      │    │  multilingual-e5-small       │  │
+│  │  terindah"  │    │ - Tokenization  │    │  → 384-dim embedding         │  │
 │  └─────────────┘    └─────────────────┘    └─────────────────────────────┘  │
 │                                                         │                    │
 │                                                         ▼                    │
@@ -154,9 +173,18 @@ Features:
 │  │  destinations │ cultures │ culinary │ events │ reviews │ users       │    │
 │  └─────────────────────────────────────────────────────────────────────┘    │
 │                                                                             │
+│  ┌─────────────────────────────────────────────────────────────────────┐    │
+│  │                    SENTIMENT ANALYSIS PIPELINE                       │    │
+│  │  User Reviews → BERT Multilingual → Sentiment Score (1-5) → Insight  │    │
+│  └─────────────────────────────────────────────────────────────────────┘    │
+│                                                                             │
+│  ┌─────────────────────────────────────────────────────────────────────┐    │
+│  │                    COMPUTER VISION (Final Round)                     │    │
+│  │  User Photo → ViT → Destination Classification → Visual Search       │    │
+│  └─────────────────────────────────────────────────────────────────────┘    │
+│                                                                             │
 └─────────────────────────────────────────────────────────────────────────────┘
-
-cultour/
+vistara/
 │
 ├── backend/                          # FastAPI Backend
 │   ├── app/
@@ -165,6 +193,9 @@ cultour/
 │   │   │   ├── embeddings.py         # Sentence Transformers wrapper
 │   │   │   ├── faiss_index.py        # FAISS vector index manager
 │   │   │   ├── search.py             # Semantic search service
+│   │   │   ├── sentiment.py          # Sentiment analysis service
+│   │   │   ├── vision.py             # Vision transformer (Final)
+│   │   │   ├── rag_pipeline.py       # RAG for recommendations
 │   │   │   └── model_cache.py        # Model caching utilities
 │   │   ├── api/                      # REST API endpoints
 │   │   │   └── v1/
@@ -172,6 +203,9 @@ cultour/
 │   │   │       └── endpoints/
 │   │   │           ├── __init__.py
 │   │   │           ├── search.py     # /search endpoints
+│   │   │           ├── recommend.py  # /recommend endpoints
+│   │   │           ├── sentiment.py  # /sentiment endpoints
+│   │   │           ├── vision.py     # /vision endpoints (Final)
 │   │   │           ├── destinations.py
 │   │   │           └── health.py
 │   │   ├── core/                     # Core configuration
@@ -187,16 +221,19 @@ cultour/
 │   │   │   ├── __init__.py
 │   │   │   ├── destination.py
 │   │   │   ├── culture.py
+│   │   │   ├── review.py
 │   │   │   └── user.py
 │   │   ├── schemas/                  # Pydantic schemas
 │   │   │   ├── __init__.py
 │   │   │   ├── destination.py
 │   │   │   ├── search.py
+│   │   │   ├── sentiment.py
 │   │   │   └── response.py
 │   │   ├── services/                 # Business logic
 │   │   │   ├── __init__.py
 │   │   │   ├── destination_service.py
-│   │   │   └── search_service.py
+│   │   │   ├── search_service.py
+│   │   │   └── sentiment_service.py
 │   │   └── main.py                   # FastAPI entry point
 │   ├── tests/                        # Unit tests
 │   │   ├── test_ai.py
@@ -219,6 +256,8 @@ cultour/
 │   │   │   ├── destinations/
 │   │   │   │   └── [id]/
 │   │   │   │       └── page.tsx      # Detail page
+│   │   │   ├── dashboard/            # Analytics dashboard (Final)
+│   │   │   │   └── page.tsx
 │   │   │   └── admin/                # Admin dashboard
 │   │   │       └── page.tsx
 │   │   ├── components/               # Reusable components
@@ -229,12 +268,16 @@ cultour/
 │   │   │   ├── search/
 │   │   │   │   ├── SearchBar.tsx
 │   │   │   │   └── SearchResults.tsx
-│   │   │   └── destinations/
-│   │   │       └── DestinationCard.tsx
+│   │   │   ├── destinations/
+│   │   │   │   └── DestinationCard.tsx
+│   │   │   └── chat/
+│   │   │       └── Chatbot.tsx       # AI Chatbot UI
 │   │   ├── services/                 # API integration
 │   │   │   ├── api.ts                # Axios instance
 │   │   │   ├── search.service.ts
-│   │   │   └── destinations.service.ts
+│   │   │   ├── destinations.service.ts
+│   │   │   ├── sentiment.service.ts
+│   │   │   └── vision.service.ts
 │   │   ├── lib/                      # Utility functions
 │   │   │   ├── utils.ts
 │   │   │   └── constants.ts
@@ -259,10 +302,11 @@ cultour/
 │   └── Dockerfile                    # Frontend container
 │
 ├── dataset/                          # Tourism data (CSV)
-│   ├── destinations.csv              # 25+ destinations
-│   ├── cultures.csv                  # 15+ cultural items
-│   ├── culinary.csv                  # 20+ culinary items
-│   ├── events.csv                    # 10+ events
+│   ├── destinations.csv              # 100+ destinations
+│   ├── cultures.csv                  # 30+ cultural items
+│   ├── culinary.csv                  # 40+ culinary items
+│   ├── events.csv                    # 20+ events
+│   ├── reviews.csv                   # 500+ synthetic reviews
 │   └── import_script.py              # Data import script
 │
 ├── database/                         # Database schemas
@@ -271,6 +315,13 @@ cultour/
 │   │   ├── versions/
 │   │   └── env.py
 │   └── seed.sql                      # Initial seed data
+│
+├── notebooks/                        # Jupyter notebooks (AI R&D)
+│   ├── 01_eda_destination.ipynb      # Exploratory data analysis
+│   ├── 02_embedding_generation.ipynb # Embedding experiments
+│   ├── 03_faiss_indexing.ipynb       # FAISS optimization
+│   ├── 04_sentiment_analysis.ipynb   # Sentiment model
+│   └── 05_rag_pipeline.ipynb         # RAG implementation
 │
 ├── docker/                           # Docker configurations
 │   ├── nginx/
@@ -285,6 +336,7 @@ cultour/
 │   ├── API.md
 │   ├── DEPLOYMENT.md
 │   ├── CONTRIBUTING.md
+│   ├── AI_HACKATHON_ITDEL.md         # Hackathon strategy
 │   └── architecture/
 │       ├── backend.md
 │       ├── frontend.md
@@ -293,7 +345,8 @@ cultour/
 ├── scripts/                          # Utility scripts
 │   ├── setup.sh
 │   ├── backup_db.sh
-│   └── deploy.sh
+│   ├── deploy.sh
+│   └── generate_embeddings.py
 │
 ├── .github/                          # GitHub Actions
 │   └── workflows/
