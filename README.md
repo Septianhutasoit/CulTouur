@@ -16,14 +16,21 @@
     <a href="#👥-team">Team</a>
   </p>
 
+  <!-- ============================================================ -->
+  <!-- LAYER 1: Core Backend + Frontend Framework                     -->
+  <!-- ============================================================ -->
   <p align="center">
     <img src="https://img.shields.io/badge/Python-3.10+-3776AB?style=for-the-badge&logo=python&logoColor=white" />
     <img src="https://img.shields.io/badge/FastAPI-0.136+-009688?style=for-the-badge&logo=fastapi&logoColor=white" />
+    <img src="https://img.shields.io/badge/Uvicorn-0.34+-009688?style=for-the-badge&logo=uvicorn&logoColor=white" />
     <img src="https://img.shields.io/badge/Next.js-14+-000000?style=for-the-badge&logo=next.js&logoColor=white" />
     <img src="https://img.shields.io/badge/TypeScript-5.0+-3178C6?style=for-the-badge&logo=typescript&logoColor=white" />
     <img src="https://img.shields.io/badge/Tailwind_CSS-3.0+-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white" />
   </p>
 
+  <!-- ============================================================ -->
+  <!-- LAYER 2: AI / Deep Learning                                    -->
+  <!-- ============================================================ -->
   <p align="center">
     <img src="https://img.shields.io/badge/PyTorch-2.12+-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white" />
     <img src="https://img.shields.io/badge/Sentence_Transformers-5.5+-FFD700?style=for-the-badge&logo=huggingface&logoColor=black" />
@@ -32,6 +39,18 @@
     <img src="https://img.shields.io/badge/Transformers-5.9+-FFD21E?style=for-the-badge&logo=huggingface&logoColor=black" />
   </p>
 
+  <!-- ============================================================ -->
+  <!-- LAYER 3: Data Science / Data Processing                        -->
+  <!-- ============================================================ -->
+  <p align="center">
+    <img src="https://img.shields.io/badge/Pandas-2.0+-150458?style=for-the-badge&logo=pandas&logoColor=white" />
+    <img src="https://img.shields.io/badge/NumPy-1.24+-013243?style=for-the-badge&logo=numpy&logoColor=white" />
+    <img src="https://img.shields.io/badge/Pydantic-2.0+-E92063?style=for-the-badge&logo=pydantic&logoColor=white" />
+  </p>
+
+  <!-- ============================================================ -->
+  <!-- LAYER 4: Infrastructure / Database                             -->
+  <!-- ============================================================ -->
   <p align="center">
     <img src="https://img.shields.io/badge/PostgreSQL-15+-4169E1?style=for-the-badge&logo=postgresql&logoColor=white" />
     <img src="https://img.shields.io/badge/Docker-24.0+-2496ED?style=for-the-badge&logo=docker&logoColor=white" />
@@ -39,8 +58,20 @@
     <img src="https://img.shields.io/badge/Nginx-1.24+-009639?style=for-the-badge&logo=nginx&logoColor=white" />
   </p>
 
+  <!-- ============================================================ -->
+  <!-- LAYER 5: Frontend UX / Animation                               -->
+  <!-- ============================================================ -->
+  <p align="center">
+    <img src="https://img.shields.io/badge/Framer_Motion-11.0+-0055FF?style=for-the-badge&logo=framer&logoColor=white" />
+    <img src="https://img.shields.io/badge/Lucide_React-0.469+-F56565?style=for-the-badge&logo=lucide&logoColor=white" />
+  </p>
+
+  <!-- ============================================================ -->
+  <!-- LAYER 6: Competition & Metadata                                -->
+  <!-- ============================================================ -->
   <p align="center">
     <img src="https://img.shields.io/badge/Status-Development-2E7D32?style=for-the-badge" />
+    <img src="https://img.shields.io/badge/AI_Hackathon_ITDel-2026-FF6B35?style=for-the-badge" />
     <img src="https://img.shields.io/badge/Preliminary_Round-Q2_2026-FF6B35?style=for-the-badge" />
     <img src="https://img.shields.io/badge/License-MIT-3C873A?style=for-the-badge" />
   </p>
