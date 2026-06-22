@@ -1,16 +1,14 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from app.api.v1.endpoints import search, vision # Tambahkan admin nanti
+from app.ai.vision import vision_manager 
 
-# Create FastAPI app
 app = FastAPI(
-    title="CulTour API",
-    description="AI-Powered Cultural Tourism Assistant for Danau Toba",
-    version="1.0.0",
-    docs_url="/docs",
-    redoc_url="/redoc"
+    title="VISTARA Intelligence API",
+    description="Tourism AI for Danau Toba",
+    version="2.0.0" # Versi 2 untuk Hackathon
 )
 
-# CORS middleware
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -21,34 +19,15 @@ app.add_middleware(
 
 @app.get("/")
 async def root():
-    return {
-        "message": "Welcome to CulTour API",
-        "version": "1.0.0",
-        "status": "running",
-        "docs": "/docs",
-        "endpoints": {
-            "search": "/api/v1/search?q=your_query",
-            "destinations": "/api/v1/destinations",
-            "health": "/health"
-        }
-    }
+    return {"app": "VISTARA AI", "status": "Intelligence System Online"}
 
-@app.get("/health")
-async def health():
-    return {
-        "status": "healthy",
-        "service": "CulTour Backend",
-        "version": "1.0.0"
-    }
+# Rute Search v2 (Semantic + Sentiment)
+app.include_router(search.router, prefix="/api/v1", tags=["Intelligence Search"])
 
-# Import and include routers
-try:
-    from app.api.v1.endpoints import search
-    app.include_router(search.router, prefix="/api/v1", tags=["search"])
-    print("✅ Search router loaded successfully")
-except Exception as e:
-    print(f"⚠️ Error loading search router: {e}")
+@app.on_event("startup")
+async def startup_event():
+    # Load dataset visual
+    vision_manager.train_samples()
+    print("🚀 Vistara Lens Intelligence Active")
 
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000, reload=True)
+app.include_router(vision.router, prefix="/api/v1/vision", tags=["Visual Discovery"])
