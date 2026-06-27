@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from app.api.v1.endpoints import search, vision # Tambahkan admin nanti
+from app.api.v1.endpoints import search, vision,destinations # Tambahkan admin nanti
 from app.ai.vision import vision_manager 
 from app.models import destination, review
 app = FastAPI(
@@ -33,4 +33,10 @@ async def startup_event():
     except Exception as e:
         print(f"⚠️ Vistara Lens Warning: {e}")
 
+app.include_router(search.router, prefix="/api/v1/search", tags=["Intelligence Search"])
 app.include_router(vision.router, prefix="/api/v1/vision", tags=["Visual Discovery"])
+app.include_router(destinations.router, prefix="/api/v1/destinations", tags=["Destinations"])
+
+app.get("/")
+async def root():
+    return {"app": "VISTARA AI", "status": "online"}
